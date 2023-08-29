@@ -9,47 +9,38 @@
   <link rel="icon"  type="image/x-icon" href="https://www.boostmymail.com/wp-content/themes/bmm/assets/img/favicon.ico">
   <title>IT Room - Signature email</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap');
-
+    @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500&display=swap");
     :root {
-      --dark-bg: #101214;
-      --dark-border: #22272B;
-      --dark-surface: #161A1D;
-      --dark-text-primary: #DEE4EA;
-      --dark-text-secondary: #738496;
-      --dark-primary: #1D7AFC;
-      --dark-text-inverse: #FFFFFF;
-      --sunset-bg: #151c19;
-      --sunset-border: #424f4a;
-      --sunset-surface: #2f3834;
-      --sunset-text-primary: #ecd2c5;
-      --sunset-text-secondary: #C0AB92;
-      --sunset-primary: #C0AB92;
-      --sunset-text-inverse: #151c19;
-      --sunrise-bg: #ecd2c5;
-      --sunrise-border: #d7c9c6;
-      --sunrise-surface: #f3e8e5;
-      --sunrise-text-primary: #4f2733;
-      --sunrise-text-secondary: #685844;
-      --sunrise-primary: #a04d66;
-      --sunrise-text-inverse: #f3e8e5;
-      --light-bg: #F7F8F9;
-      --light-border: #F1F2F4;
-      --light-surface: #FFFFFF;
-      --light-text-primary: #091E42;
-      --light-text-secondary: #626F86;
-      --light-primary: #1D7AFC;
-      --light-text-inverse: #FFFFFF;
-      --bg: var(--dark-bg);
-      --border: var(--dark-border);
-      --surface: var(--dark-surface);
-      --text-primary: var(--dark-text-primary);
-      --text-secondary: var(--dark-text-secondary);
-      --primary: var(--dark-primary);
-      --text-inverse: var(--dark-text-inverse);
+      --default-bg: rgba(0, 140, 140, 0.3);
+      --default-border: #000000;
+      --default-surface: #FF0000;
+      --default-text-primary: #000000;
+      --default-text-secondary: #6C757D;
+      --default-primary: #008C8C;
+      --default-text-inverse: #FFFFFF;
+      --vidar-border: #000000;
+      --vidar-text-primary: #000000;
+      --vidar-text-secondary: #6C757D;
+      --vidar-text-inverse: #FFFFFF;
+      --aodb-border: #000000;
+      --aodb-text-primary: #000000;
+      --aodb-text-secondary: #6C757D;
+      --aodb-text-inverse: #FFFFFF;
+      --advisa-border: #000000;
+      --advisa-text-primary: #000000;
+      --advisa-text-secondary: #6C757D;
+      --advisa-text-inverse: #FFFFFF;
+      --bg: var(--default-bg);
+      --border: var(--default-border);
+      --surface: var(--default-surface);
+      --text-primary: var(--default-text-primary);
+      --text-secondary: var(--default-text-secondary);
+      --primary: var(--default-primary);
+      --text-inverse: var(--default-text-inverse);
     }
+
     body {
-      font-family: 'Urbanist', sans-serif;
+      font-family: "Urbanist", sans-serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 1.5;
@@ -57,15 +48,6 @@
       padding: 1rem;
       overflow-x: hidden;
     }
-
-    .informations * {
-      box-sizing: border-box;
-    }
-
-    p, h1, h2, h3 {
-      margin: 0;
-    }
-
     body #mobile {
       z-index: 5;
       position: fixed;
@@ -100,12 +82,16 @@
       background-color: var(--primary);
       border-radius: 8px;
     }
+    body #mobile .container .btn:hover {
+      padding: 0.75rem 1rem;
+      background-color: var(--surface);
+      border-radius: 8px;
+    }
     body #mobile .container a {
       text-decoration: none;
       font-size: 20px;
-      color: var(--text-primary);
+      color: var(--text-inverse);
     }
-
     body #header {
       position: fixed;
       width: calc(60vw - 3rem - 4rem);
@@ -131,28 +117,32 @@
       background-color: var(--bg);
       border-radius: 12px;
       padding: calc(132px + 3rem) 3rem 3rem 3rem;
-      width: clamp(calc(500px + 3rem + 3rem), calc((120vw - 2rem) / 2 - 6rem),(120vw - 2rem) / 2 - 6rem);
+      width: clamp(500px + 3rem + 3rem, (120vw - 2rem) / 2 - 6rem, (120vw - 2rem) / 2 - 6rem);
       height: calc(100vh - 2rem - 132px - 6rem);
     }
-    body main.container .signature h1 {
+    body main.container .signature .signature-preview > h1 {
       font-size: 3rem;
       font-weight: 500;
       line-height: 1.4;
       margin-bottom: 2rem;
     }
-    body main.container .signature p {
+    body main.container .signature .signature-preview > p {
       font-size: 1.5rem;
-      color: #6c757d;
+      color: var(--text-secondary);
       margin-bottom: 5rem;
     }
     body main.container .signature .signature-preview .signature-preview-wrapper {
       padding: 1.5rem;
       background-color: #fff;
       display: inline-block;
+      border-radius: 16px;
     }
     body main.container .informations {
       width: 100%;
-      margin: 3rem 1rem 1rem clamp(calc(500px + 6rem + 6rem + 2rem),calc(60vw + 2rem),calc(60vw + 2rem));
+      margin: 3rem 1rem 1rem clamp(500px + 6rem + 6rem + 2rem, 60vw + 2rem, 60vw + 2rem);
+    }
+    body main.container .informations * {
+      box-sizing: border-box;
     }
     body main.container .informations h2 {
       font-size: 2rem;
@@ -162,9 +152,10 @@
     }
     body main.container .informations p {
       font-size: 1.5rem;
-      color: #6c757d;
+      color: var(--text-secondary);
       margin-bottom: 3rem;
     }
+
     .field__container {
       margin-bottom: 1rem;
     }
@@ -172,14 +163,14 @@
       display: block;
       margin-bottom: 0.5rem;
       font-size: 1.25rem;
-      color: #000;
+      color: var(--text-primary);
     }
     .field__container .field__label .field__label--required {
       color: #ff0000;
     }
     .field__container .field__input {
       border: none;
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid var(--border);
       border-radius: 0;
       background-color: transparent;
       padding: 0.25rem 0.5rem;
@@ -195,73 +186,6 @@
       border-bottom: 2px solid;
       border-color: var(--primary);
     }
-    .field__container select.field__input {
-      padding: 0.75rem 1rem 0.75rem 0.5rem;
-      background-image:
-              linear-gradient(45deg, transparent 50%, #000000 50%),
-              linear-gradient(135deg, #000000 50%, transparent 50%);
-      background-position:
-              calc(100% - 20px) calc(1em + 2px),
-              calc(100% - 15px) calc(1em + 2px),
-              calc(100% - 2.5em) 0.5em;
-      background-size:
-              5px 5px,
-              5px 5px,
-              1px 1.5em;
-      background-repeat: no-repeat;
-      appearance: none !important;
-      padding-right: 2rem !important;
-    }
-    .field__container select.field__input:focus-visible {
-      background-image:
-              linear-gradient(45deg, var(--primary) 50%, transparent 50%),
-              linear-gradient(135deg, transparent 50%, var(--primary) 50%);
-      background-position:
-              calc(100% - 15px) calc(1em + 2px),
-              calc(100% - 20px) calc(1em + 2px),
-              calc(100% - 2.5em) 0.5em;
-      outline: 0;
-    }
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    input[type=checkbox]:focus-visible + label::before,
-    input[type=radio]:focus-visible + label::before,
-    select:focus-visible,
-    textarea:focus-visible,
-    [tabindex]:focus-visible,
-    video:focus-visible[controls],
-    audio:focus-visible[controls],
-    [contenteditable]:not([contenteditable=false]):focus-visible,
-    details:focus-visible,
-    details > summary:first-of-type:focus-visible {
-      outline-style: solid;
-      border-color: var(--primary) !important
-    }
-
-    a,
-    button,
-    input,
-    input[type=checkbox] + label::before,
-    input[type=radio] + label::before,
-    select,
-    textarea,
-    [tabindex],
-    video[controls],
-    audio[controls],
-    [contenteditable]:not([contenteditable=false]),
-    details,
-    details > summary:first-of-type {
-      outline-offset: -1px;
-      outline-width: 2px;
-      outline-color: var(--primary) ;
-    }
-
-    ::selection {
-      background-color: var(--primary);
-      color: #000000;
-    }
-
     .field__container .field__input.toggle {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -279,7 +203,6 @@
       /*border: none;*/
       transition: background-color ease 0.3s;
     }
-
     .field__container .field__input.toggle:before {
       content: "";
       display: block;
@@ -293,13 +216,69 @@
       border-radius: 50%;
       transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
     }
-
     .field__container .field__input.toggle:checked {
       background-color: var(--primary);
     }
-
     .field__container .field__input.toggle:checked:before {
       left: calc(100% - 34px - 1px);
+    }
+    .field__container select.field__input {
+      padding: 0.75rem 1rem 0.75rem 0.5rem;
+      background-image: linear-gradient(45deg, transparent 50%, var(--border) 50%), linear-gradient(135deg, var(--border) 50%, transparent 50%);
+      background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+      background-size: 5px 5px, 5px 5px, 1px 1.5em;
+      background-repeat: no-repeat;
+      appearance: none !important;
+      padding-right: 2rem !important;
+    }
+    .field__container select.field__input:focus-visible {
+      background-image: linear-gradient(45deg, var(--primary) 50%, transparent 50%), linear-gradient(135deg, transparent 50%, var(--primary) 50%);
+      background-position: calc(100% - 15px) calc(1em + 2px), calc(100% - 20px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+      outline: 0;
+    }
+
+    :not(.signature-preview) p, :not(.signature-preview) h1, :not(.signature-preview) h2, :not(.signature-preview) h3 {
+      margin: 0;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    input[type=checkbox]:focus-visible + label::before,
+    input[type=radio]:focus-visible + label::before,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex]:focus-visible,
+    video:focus-visible[controls],
+    audio:focus-visible[controls],
+    [contenteditable]:not([contenteditable=false]):focus-visible,
+    details:focus-visible,
+    details > summary:first-of-type:focus-visible {
+      outline-style: solid;
+      border-color: var(--primary) !important;
+    }
+
+    a,
+    button,
+    input,
+    input[type=checkbox] + label::before,
+    input[type=radio] + label::before,
+    select,
+    textarea,
+    [tabindex],
+    video[controls],
+    audio[controls],
+    [contenteditable]:not([contenteditable=false]),
+    details,
+    details > summary:first-of-type {
+      outline-offset: -1px;
+      outline-width: 2px;
+      outline-color: var(--primary);
+    }
+
+    ::selection {
+      background-color: var(--primary);
+      color: var(--text-primary);
     }
   </style>
 </head>
@@ -313,7 +292,175 @@
         <h1>Créer votre Signature Email personnalisé</h1>
         <p>Pour Gmail copiez en l'état la signature</p>
         <div class="signature-preview-wrapper">
-
+          <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:360px;" width="360" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+          <div style="max-width:360px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+              <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:114px;" ><![endif]-->
+                  <div style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:114px!important;max-width:114px;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tbody>
+                      <tr>
+                        <td style="vertical-align:top;padding:0px;padding-right:24px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                            <tbody>
+                            <tr>
+                              <td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                  <tbody>
+                                  <tr>
+                                    <td style="width:90px;">
+                                      <img class="profil-picture" height="auto" src="https://imgs.search.brave.com/bHpTjt49BE6IN6GPjmIm4FaNZXFj4xFH3ey8KXtPew0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/dzNzY2hvb2xzLmNv/bS9ob3d0by9pbWdf/YXZhdGFyLnBuZw" style="border:0;border-radius:99px;display:block;outline:none;text-decoration:none;text-decoration:none!important;height:auto;width:100%;font-size:13px;" width="90" />
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr class="entreprise-social">
+                              <td align="left" style="font-size:0px;padding:0px;padding-top:12px;word-break:break-word;">
+                                <table class="entreprise-social-container" cellpadding="0" cellspacing="0" width="50" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:50px;border:none;">
+                                  <tr class="entreprise-social-list">
+                                    <td style="width: 20px; padding: 0;">
+                                      <a class="facebook-link" href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none!important;">
+                                        <img class="facebook" width="20px" height="20px" src="https://imgs.search.brave.com/xGN3zqoqn9kv6kc9HS0xaXXn7yLZt-mVG6uQUO9Z2sg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL2ltYWdlcy81/ODQ4MTVkMWNlZjEw/MTRjMGI1ZTQ5NzYu/cG5n" />
+                                      </a>
+                                    </td>
+                                    <td style="width: 20px;">
+                                      <a href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none!important;">
+                                        <img width="20px" height="20px" src="https://imgs.search.brave.com/xGN3zqoqn9kv6kc9HS0xaXXn7yLZt-mVG6uQUO9Z2sg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL2ltYWdlcy81/ODQ4MTVkMWNlZjEw/MTRjMGI1ZTQ5NzYu/cG5n" />
+                                      </a>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td><td class="" style="vertical-align:top;width:240px;" ><![endif]-->
+                  <div style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:240px!important;max-width:240px;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tbody>
+                      <tr>
+                        <td style="vertical-align:top;padding:0px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                            <tbody>
+                            <tr>
+                              <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
+                                <table cellpadding="0" cellspacing="0" width="240" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:240px;border:none;">
+                                  <tr>
+                                    <td style="color:#1a1919;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:18px;line-height:20px;font-weight:700;" class="profil-name">Jone Doe</td></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding-bottom:8px;color:#1a1919;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:18px;font-weight:normal;" class="profil-job">My Job</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="color:#808080;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:18px;font-weight:normal;"><a href="mailto:your@email.fr" target="_blank" style="text-decoration:none;text-decoration:none !important;color:#9fd865;" class="profil-email">your@email.fr</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="color:#808080;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:18px;font-weight:normal;"><a href="tel:+33606060606" target="_blank" style="text-decoration:none;text-decoration:none !important;color:#808080" class="profil-tel">+33 (0)6 06 06 06 06</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="color:#808080;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:18px;font-weight:normal;"><a href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none !important;color:#808080" class="profil-website">www.website.com</a></td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:360px;" width="360" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+          <div style="max-width:360px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+              <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:360px;" ><![endif]-->
+                  <div style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%!important;max-width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tbody>
+                      <tr>
+                        <td style="vertical-align:top;padding:0px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                            <tbody>
+                            <tr>
+                              <td style="font-size:0px;word-break:break-word;">
+                                <div style="height:12px;line-height:12px;">&#8202;</div>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:360px;" width="360" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+          <div style="max-width:360px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+              <tbody>
+              <tr>
+                <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+                  <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:360px;" ><![endif]-->
+                  <div style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%!important;max-width:100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tbody>
+                      <tr>
+                        <td style="vertical-align:top;padding:0px;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                            <tbody>
+                            <tr>
+                              <td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                  <tbody>
+                                  <tr>
+                                    <td style="width:360px;">
+                                      <a class="banner-link" href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none!important;">
+                                        <img class="banner-image" height="auto" src="https://images.unsplash.com/photo-1564419320408-38e24e038739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" style="border:0;border-radius:16px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="360" />
+                                      </a>
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--[if mso | IE]></td></tr></table><![endif]-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--[if mso | IE]></td></tr></table><![endif]-->
         </div>
       </div>
     </div>
@@ -397,55 +544,48 @@
 
       const allTeams = [
         {
-          company: 'Dark',
+          company: 'Vidar',
           website: 'https://theo.richier.org',
           logo: 'https://www.itroom.fr/wp-content/uploads/2021/06/logo.png',
           color: '38, 109, 174',
-          address: '134 Grand Rue',
-          cp: '67100',
-          city: 'Strasbourg',
           socials: {
-            'https://twitter.com/Actency' : 'https://www.advisa.fr/wp-content/uploads/2021/07/twitter_actency.png',
-            'https://www.facebook.com/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/facebook_actency.png',
-            'https://www.linkedin.com/company/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/linkedin_actency.png',
-            'https://www.youtube.com/channel/UCmw86Kb762OTSp5gaFjszXA' : 'https://www.advisa.fr/wp-content/uploads/2021/07/youtube_actency.png'
+            'https://twitter.com/' : 'https://twitter.com/',
+            'https://www.facebook.com/' : 'https://www.facebook.com/',
+            'https://www.linkedin.com/' : 'https://www.linkedin.com/',
+            'https://www.youtube.com/' : 'https://www.youtube.com/'
           },
         },
         {
-          company: 'Sunset',
+          company: 'IT ROOM',
           website: 'https://theo.richier.org',
           logo: 'https://www.advisa.fr/wp-content/uploads/2021/05/aodb_logo.png',
           color: '236, 230, 51',
-          address: '134 Grand Rue',
-          cp: '67100',
-          city: 'Strasbourg',
           socials: {
-            'https://twitter.com/Actency' : 'https://www.advisa.fr/wp-content/uploads/2021/07/twitter_actency.png',
-            'https://www.facebook.com/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/facebook_actency.png',
-            'https://www.linkedin.com/company/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/linkedin_actency.png',
-            'https://www.youtube.com/channel/UCmw86Kb762OTSp5gaFjszXA' : 'https://www.advisa.fr/wp-content/uploads/2021/07/youtube_actency.png'
+            'https://twitter.com/' : 'https://twitter.com/',
+            'https://www.facebook.com/' : 'https://www.facebook.com/',
+            'https://www.linkedin.com/' : 'https://www.linkedin.com/',
+            'https://www.youtube.com/' : 'https://www.youtube.com/'
           },
         },
         {
-          company: 'Light',
+          company: 'Advisa',
           website: 'https://theo.richier.org',
           logo: 'https://www.advisa.fr/wp-content/uploads/2021/05/advisa_logo.png',
           color: '159, 216, 101',
-          address: '134 Grand Rue',
-          cp: '67100',
-          city: 'Strasbourg',
           socials: {
-            'https://twitter.com/Actency' : 'https://www.advisa.fr/wp-content/uploads/2021/07/twitter_actency.png',
-            'https://www.facebook.com/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/facebook_actency.png',
-            'https://www.linkedin.com/company/actency/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/linkedin_actency.png',
-            'https://www.youtube.com/channel/UCmw86Kb762OTSp5gaFjszXA' : 'https://www.advisa.fr/wp-content/uploads/2021/07/youtube_actency.png'
+            'https://twitter.com/' : 'https://twitter.com/',
+            'https://www.facebook.com/' : 'https://www.facebook.com/',
+            'https://www.linkedin.com/' : 'https://www.linkedin.com/',
+            'https://www.youtube.com/' : 'https://www.youtube.com/'
           },
         },
       ];
       // Theme
       var themes = [];
 
-      // select
+      const btnShowSocials = document.getElementById("socials");
+
+      // "Select" Fields options in form
       const selectInputTeams = document.getElementById("entreprise");
       allTeams.forEach((team) => {
         selectInputTeams.innerHTML += `<option value="${team.company.toLocaleLowerCase()}">${team.company}</option>`;
@@ -453,14 +593,15 @@
       });
       selectInputTeams.firstElementChild.setAttribute("selected", "");
 
+      // Selected Company
       const selectedCompany = () => {
         let themeSelected;
         allTeams.forEach((team, i) => {
           if (selectInputTeams.value === team.company.toLocaleLowerCase()) {
+            // Changing styles based on select field
             themeSelected = themes[i];
             document.documentElement.style.setProperty('--bg', `rgba(${team.color}, 0.3)`);
-            document.documentElement.style.setProperty('--border', `var(--${themeSelected}-border)`);
-            document.documentElement.style.setProperty('--surface', `var(--${themeSelected}-surface)`);
+            document.documentElement.style.setProperty('--border', `var(--${themeSelected}-border`);
             document.documentElement.style.setProperty('--text-primary', `var(--${themeSelected}-text-primary)`);
             document.documentElement.style.setProperty('--text-secondary', `var(--${themeSelected}-text-secondary)`);
             document.documentElement.style.setProperty('--primary', `rgba(${team.color}, 1)`);
@@ -471,19 +612,28 @@
         return themeSelected;
       }
 
+      // Generate code
       const btnLogo = document.getElementById("logo");
       btnLogo.addEventListener('click', () => {
-        alert("Test");
       });
 
+      // If the "Select" field changes value
       selectInputTeams.addEventListener("change", () => {
         selectedCompany();
         console.log(selectedCompany());
       });
 
       selectedCompany();
-      // show Social
 
+      const showSocials = () => {
+        return (btnShowSocials.checked ? true : false )
+      }
+      // show Social
+      btnShowSocials.addEventListener('click', () => {
+      });
+      btnShowSocials.addEventListener("change", () => {
+        console.log(showSocials());
+      });
       //logo
 
     });
