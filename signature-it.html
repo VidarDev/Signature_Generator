@@ -182,6 +182,10 @@
       border-bottom: 2px solid;
       border-color: var(--primary);
     }
+    .field__container .field__input:invalid {
+      border-bottom: 2px solid;
+      border-color: #ff0000;
+    }
     .field__container .field__input.toggle {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -308,7 +312,7 @@
                                   <tbody>
                                   <tr>
                                     <td style="width:90px;">
-                                      <img class="profil-picture" height="auto" src="https://imgs.search.brave.com/bHpTjt49BE6IN6GPjmIm4FaNZXFj4xFH3ey8KXtPew0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/dzNzY2hvb2xzLmNv/bS9ob3d0by9pbWdf/YXZhdGFyLnBuZw" style="border:0;border-radius:99px;display:block;outline:none;text-decoration:none;text-decoration:none!important;height:auto;width:100%;font-size:13px;" width="90" />
+                                      <img class="profil-picture" height="auto" src="https://imgs.search.brave.com/UJAQExSrTpE5Ksb6hnbL1liHCQ5Kxu8JX8d2sgTkCL4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wdWIt/c3RhdGljLmZvdG9y/LmNvbS9hc3NldHMv/cHJvamVjdHMvcGFn/ZXMvZDViZGQwNTEz/YTA3NDBhOGEzODc1/MmRiYzMyNTg2ZDAv/NjAwdy9mb3Rvci0w/M2QxYTkxYTBjZWM0/NTQyOTI3ZjUzYzg3/ZTA1OTlmNi5qcGc" style="border:0;border-radius:99px;display:block;outline:none;text-decoration:none;text-decoration:none!important;height:auto;width:100%;font-size:13px;" width="90" />
                                     </td>
                                   </tr>
                                   </tbody>
@@ -319,16 +323,6 @@
                               <td align="left" style="font-size:0px;padding:0px;padding-top:12px;word-break:break-word;">
                                 <table class="entreprise-social-container" cellpadding="0" cellspacing="0" width="50" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:50px;border:none;">
                                   <tr class="entreprise-social-list">
-                                    <td style="width: 20px; padding: 0;">
-                                      <a class="facebook-link" href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none!important;">
-                                        <img class="facebook" width="20px" height="20px" src="https://imgs.search.brave.com/xGN3zqoqn9kv6kc9HS0xaXXn7yLZt-mVG6uQUO9Z2sg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL2ltYWdlcy81/ODQ4MTVkMWNlZjEw/MTRjMGI1ZTQ5NzYu/cG5n" />
-                                      </a>
-                                    </td>
-                                    <td style="width: 20px;">
-                                      <a href="https://prestashop.fr/" target="_blank" style="text-decoration:none;text-decoration:none!important;">
-                                        <img width="20px" height="20px" src="https://imgs.search.brave.com/xGN3zqoqn9kv6kc9HS0xaXXn7yLZt-mVG6uQUO9Z2sg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuc3RpY2twbmcu/Y29tL2ltYWdlcy81/ODQ4MTVkMWNlZjEw/MTRjMGI1ZTQ5NzYu/cG5n" />
-                                      </a>
-                                    </td>
                                   </tr>
                                 </table>
                               </td>
@@ -480,37 +474,46 @@
           <input name="nom" type="text" id="nom" class="field__input" required />
         </div>
         <div class="field__container">
+          <label class="field__label" for="job-name">
+            Votre Job
+            <span class="field__label--required">*</span>
+          </label>
+          <input name="nom" type="text" id="job-name" class="field__input" required />
+        </div>
+        <div class="field__container">
           <label class="field__label" for="email">
             Email
             <span class="field__label--required">*</span>
           </label>
-          <input name="email" type="text" id="email" class="field__input" required />
+          <input name="email" type="email" id="email" class="field__input" required />
         </div>
         <div class="field__container">
           <label class="field__label" for="tel">
             Téléphone
             <span class="field__label--required">*</span>
           </label>
-          <input name="tel" type="tel" id="tel" class="field__input" pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$
-" required />
+          <input name="tel" type="tel" id="tel" class="field__input" pattern="^((\+)33|0)[1-9](\d{2}){4}$" required />
         </div>
         <div class="field__container">
           <label class="field__label" for="profil-avatar">
             Lien vers la photo de profil
+            <span class="field__label--required">*</span>
           </label>
-          <input name="profil-avatar" type="url" id="profil-avatar" class="field__input" pattern="https://.*" />
+          <input name="profil-avatar" type="url" id="profil-avatar" class="field__input" pattern="https://.*" required />
         </div>
         <div class="field__container">
-          <label class="field__label" for="button-text">
-            Texte du bouton
+          <label class="field__label" for="website-text">
+            Nom du site web
+            <span class="field__label--required">*</span>
           </label>
-          <input name="button-text" type="text" id="button-text" class="field__input" />
+          <input name="website-text" type="text" id="website-text" class="field__input" required />
         </div>
         <div class="field__container">
-          <label class="field__label" for="button-link">
-            Lien du boution
+          <label class="field__label" for="website-link">
+            Lien du site web
+            <span class="field__label--required">*</span>
           </label>
-          <input name="button-link" type="url" id="button-link" class="field__input" pattern="https://.*" />
+          <input name="website-link" type="url" id="website-link" class="field__input" pattern="https://.*" required />
         </div>
         <div class="field__container">
           <label class="field__label" for="socials">
@@ -538,6 +541,20 @@
         document.getElementById("mobile").style.display = "none";
       }
 
+      // All buttons variables
+      const btnShowSocials = document.getElementById("socials");
+      const selectInputTeams = document.getElementById("entreprise");
+      const inputName = document.getElementById("nom");
+      const inputJob = document.getElementById("job-name")
+      const inputEmail = document.getElementById("email");
+      const inputTel = document.getElementById("tel");
+      const inputAvatar = document.getElementById("profil-avatar");
+      const inputTextWebsite = document.getElementById("website-text");
+      const inputLinkWebsite = document.getElementById("website-link");
+
+      // Create table for a list of themes
+      var themes = [];
+
       const allTeams = [
         {
           company: 'Vidar',
@@ -546,10 +563,9 @@
           color: '0, 140, 140',
           banner: 'https://images.unsplash.com/photo-1564419320408-38e24e038739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
           socials: {
-            'https://twitter.com/' : 'https://twitter.com/',
-            'https://www.facebook.com/' : 'https://www.facebook.com/',
-            'https://www.linkedin.com/' : 'https://www.linkedin.com/',
-            'https://www.youtube.com/' : 'https://www.youtube.com/'
+            'https://twitter.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/twitter_aodb.png',
+            'https://www.facebook.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/facebook_aodb.png',
+            'https://www.linkedin.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/linkedin_aodb.png'
           },
         },
         {
@@ -559,20 +575,14 @@
           color: '38, 109, 174',
           banner: 'https://images.unsplash.com/photo-1564419320408-38e24e038739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
           socials: {
-            'https://twitter.com/' : 'https://twitter.com/',
-            'https://www.facebook.com/' : 'https://www.facebook.com/',
-            'https://www.linkedin.com/' : 'https://www.linkedin.com/',
-            'https://www.youtube.com/' : 'https://www.youtube.com/'
+            'https://twitter.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/twitter_aodb.png',
+            'https://www.facebook.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/facebook_aodb.png',
+            'https://www.linkedin.com/' : 'https://www.advisa.fr/wp-content/uploads/2021/07/linkedin_aodb.png'
           },
         },
       ];
-      // Theme
-      var themes = [];
 
-      const btnShowSocials = document.getElementById("socials");
-
-      // "Select" Fields options in form
-      const selectInputTeams = document.getElementById("entreprise");
+      // List of teams
       allTeams.forEach((team) => {
         selectInputTeams.innerHTML += `<option value="${team.company.toLocaleLowerCase()}">${team.company}</option>`;
         themes.push(team.company.toLocaleLowerCase());
@@ -598,30 +608,97 @@
         return themeSelected;
       }
 
-      // Generate code
-      const btnLogo = document.getElementById("logo");
-      btnLogo.addEventListener('click', () => {
-      });
+      const selectedCompanySocials = () => {
+        let socialThemeSelected;
+        allTeams.forEach((team, i) => {
+          if (selectInputTeams.value === team.company.toLocaleLowerCase()) {
+            socialThemeSelected =  Object.entries(team.socials);
+            socialThemeSelected.forEach((social, i) => {
+              if (socialThemeSelected[i][1] && socialThemeSelected[i][0]) {
+                console.log(socialThemeSelected[i][1]);
+                document.querySelector(".entreprise-social-list").innerHTML += `
+                <td style="width: 20px; padding-right: 4px;">
+                  <a href="${socialThemeSelected[i][0]}\" target="_blank" style="text-decoration:none;text-decoration:none!important;">
+                    <img width="20px" height="20px" src="${socialThemeSelected[i][1]}" />
+                  </a>
+                </td>`;
+              }
+            });
+          }
+        });
+      }
+
+      const showSocials = () => {
+        return (btnShowSocials.checked ? true : false);
+      }
 
       // If the "Select" field changes value
       selectInputTeams.addEventListener("change", () => {
         selectedCompany();
-        console.log(selectedCompany());
+        document.querySelector(".profil-email").style.color = `${document.documentElement.style.getPropertyValue("--primary")}`;
+        // console.log(selectedCompany());
+      });
+
+      // Show Social
+      btnShowSocials.addEventListener("change", () => {
+        if ( showSocials() === true ) {
+          console.log("yes");
+          document.querySelector(".entreprise-social-list").style.display = "table-row";
+          document.querySelector(".entreprise-social-list").innerHTML = "";
+          selectedCompanySocials();
+        } else {
+          console.log("no");
+          document.querySelector(".entreprise-social-list").style.display = "none";
+        }
+      });
+
+      inputName.addEventListener("change", () => {
+        document.querySelector(".profil-name").textContent = `${inputName.value}`;
+      });
+
+      inputJob.addEventListener("change", () => {
+        document.querySelector(".profil-job").textContent = `${inputJob.value}`;
+      });
+
+      inputEmail.addEventListener("change", () => {
+        if ( inputEmail.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/) ) {
+          document.querySelector(".profil-email").textContent = `${inputEmail.value}`;
+          document.querySelector(".profil-email").setAttribute("href", `mailto:${inputEmail.value}`);
+        } else {
+          alert("Le format de l'email n'est pas bon");
+        }
+      });
+
+      inputTel.addEventListener("change", () => {
+        if ( inputTel.value.match(/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/) ) {
+          document.querySelector(".profil-tel").textContent = `${inputTel.value}`;
+          document.querySelector(".profil-tel").setAttribute("href", `tel:${inputTel.value.replaceAll(' ', '')}`);
+        } else {
+          alert("Le format du numéro n'est pas bon");
+        }
+        console.log(inputTel.value);
+      });
+
+      inputAvatar.addEventListener("change", () => {
+        document.querySelector(".profil-picture").setAttribute("src", `${inputAvatar.value}`);
+      });
+
+      inputTextWebsite.addEventListener("change", () => {
+        document.querySelector(".profil-website").textContent = `${inputTextWebsite.value}`;
+      });
+
+      inputLinkWebsite.addEventListener("change", () => {
+        document.querySelector(".profil-website").setAttribute("href", `${inputLinkWebsite.value}`);
+        document.querySelector(".banner-link").setAttribute("href", `${inputLinkWebsite.value}`);
       });
 
       selectedCompany();
+      document.querySelector(".profil-email").style.color = `${document.documentElement.style.getPropertyValue("--primary")}`;
 
-      const showSocials = () => {
-        return (btnShowSocials.checked ? true : false )
-      }
-      // show Social
-      btnShowSocials.addEventListener('click', () => {
-      });
-      btnShowSocials.addEventListener("change", () => {
-        console.log(showSocials());
-      });
-      //logo
-
+      // Generate code
+      // const btnLogo = document.getElementById("logo");
+      // btnLogo.addEventListener('click', () => {
+      // });
     });
   </script>
 </body>
